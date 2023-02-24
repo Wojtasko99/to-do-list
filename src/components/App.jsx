@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Item from "./Item";
+import InputArea from "./InputArea";
 
 function App() {
   const [inputText, handleInput] = useState("");
@@ -14,7 +15,6 @@ function App() {
       return [...x, inputText];
     });
     handleInput("");
-    console.log(tasks);
   }
 
   function handleDeleteItem(id){
@@ -30,12 +30,7 @@ function App() {
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
-      <div className="form">
-        <input type="text" onChange={handleChange} value={inputText} />
-        <button onClick={handleClick}>
-          <span>Add</span>
-        </button>
-      </div>
+        <InputArea handleClick={handleClick} handleChange={handleChange} inputText={inputText}/>
       <div>
         <ul>
           {tasks.map((x, index) => (
