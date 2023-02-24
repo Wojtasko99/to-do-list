@@ -17,6 +17,14 @@ function App() {
     console.log(tasks);
   }
 
+  function handleDeleteItem(id){
+    addTask((prevItem) => {
+      return prevItem.filter((val, index) => {
+        return index !== id;
+      })
+    })
+  }
+
   return (
     <div className="container">
       <div className="heading">
@@ -30,8 +38,8 @@ function App() {
       </div>
       <div>
         <ul>
-          {tasks.map((x) => (
-            <Item text={x} />
+          {tasks.map((x, index) => (
+            <Item key={index} id={index} text={x} deleteItem={handleDeleteItem}/>
           ))}
         </ul>
       </div>
